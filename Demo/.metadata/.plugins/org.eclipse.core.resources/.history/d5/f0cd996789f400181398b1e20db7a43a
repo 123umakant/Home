@@ -1,0 +1,33 @@
+package com.test.controller;
+
+import static com.test.database.OfyService.ofy;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.test.entity.StudentDetail;
+
+public class UserDetail extends HttpServlet {
+	
+	
+	public void doPost(HttpServletRequest req,HttpServletResponse res)
+		throws IOException,ServletException	
+	{
+		long Contact = Long.parseLong(req.getParameter("Contact")); 
+        String Password =req.getParameter("Password");
+        StudentDetail list =ofy().load().type(StudentDetail.class).id(Contact).now();
+		
+		
+			
+		
+	
+	
+		
+	       
+	        }
+	}
+	

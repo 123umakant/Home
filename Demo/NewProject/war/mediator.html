@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+setTimeout(executeQuery, 5000);
+
+});
+function executeQuery() {                                            
+  $.ajax({
+    url: 'https://192.168.0.230/test.php',
+    success: function(data) {
+      console.log(data);
+      
+        if(data!='[')
+        	{
+        	   
+        	
+       //Send data to servlet.
+    
+         $.ajax({
+        	
+    	    type: 'get', // it's easier to read GET request parameters
+    	    url: 'http://localhost:8888/call',
+    	    dataType: 'JSON',
+    	    data: { 
+    	      loadProds: 1,
+    	      test: JSON.stringify(data) // look here!
+    	     },
+    	    
+    	    success: function(data) {
+
+    	    },
+    	    
+    	    error: function(data) {
+    	        //alert('fail');
+    	    }
+    	});
+        	}	
+	  // do something with the return value here if you like
+    }
+  });
+  setTimeout(executeQuery, 20000); // you could choose not to continue on failure...
+}
+//setTimeout(function(){
+  //  location.reload();
+//},10000);
+
+    
+</script>
+</head>
+<body>
+
+Welcome
+
+</body>
+</html>
+  

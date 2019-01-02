@@ -1,0 +1,22 @@
+package com.test.database;
+
+import com.test.entity.StudentDetail;
+
+public class OfyService {
+	static {
+		
+		     factory().registor(StudentDetail.class);
+		     
+	
+		}
+public static Objectify ofy()
+{
+	 return ObjectifyService.ofy();
+  
+}
+	private static ObjectifyFactory factory() {
+		// TODO Auto-generated method stub
+		return ObjectifyService factory();
+	}
+	
+}

@@ -1,0 +1,30 @@
+package com.test.controller;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import  static com.test.database.OfyService.*;
+
+import com.test.entity.StudentDetail;
+
+@SuppressWarnings("serial")
+public class Login_Detail extends HttpServlet {
+	
+	
+	@SuppressWarnings("unused")
+	public void doPost(HttpServletRequest req,HttpServletResponse res)
+	
+	{
+		
+		String Name = req.getParameter("Name"); 
+		Long Contect = Long.parseLong(req.getParameter("Contect")); 
+	        String Password =req.getParameter("Password");
+	        String Conform = req.getParameter("ConPassword");
+	        StudentDetail obj = new StudentDetail(Contect, Name, Password);
+	       ofy().save().entity(obj).now();
+	
+	
+	}
+	
+}

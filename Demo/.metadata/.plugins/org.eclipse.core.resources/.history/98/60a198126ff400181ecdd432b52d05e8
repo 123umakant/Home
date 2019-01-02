@@ -1,0 +1,25 @@
+<html>  
+<body>
+
+<%@page import="static com.test.database.OfyService.ofy" %>
+<%@page import="java.io.IOException" %>
+<%@page import="java.io.IOException" %>
+<%@page import="java.io.IOException" %>  
+<% String Name = req.getParameter("Name"); 
+long Contact = Long.parseLong(req.getParameter("Contact")); 
+String Password =req.getParameter("Password");
+String Confirm = req.getParameter("ConPassword");
+StudentDetail obj = new StudentDetail(Contact, Name, Password);
+
+if(Password.equals(Confirm))
+ {
+
+  ofy().save().entity(obj).now();
+ }
+ else
+ {
+	 
+ }
+%>  
+</body>  
+</html>  

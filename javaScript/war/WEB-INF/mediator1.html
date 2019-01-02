@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+
+  var bucket;
+var time;
+$(document).ready(function(){
+time=Date.now()/1000;
+//alert(time);
+//	setTimeout(executeQuery(time), 5000);
+setTimeout(executeQuery, 5000);
+});
+function executeQuery() {                                            
+  $.ajax({
+    url: 'https://192.168.0.230/test.php?time='+time,
+  //  url: 'https://192.168.0.230/test.php',
+    success: function(data) {
+      console.log(data);
+      
+        if(data!='[')
+        	{
+      //  	alert(data);
+        	// data=data.substring(2,data.lenth-1);
+              var splitted = data.split("<");
+        //      alert(splitted.length);
+             var jsonstr,json;
+             for(var i=0;i<splitted.length-1;i++)
+              { if(i==0)
+            	  jsonstr=splitted[i].replace("[","");
+              else
+            	  jsonstr=splitted[i];
+           //   alert(jsonstr);
+              json=JSON.parse(jsonstr);
+              time=json.uniqueid;
+         //   	 alert(json.uniqueid);
+              }
+        	
+       //Send data to servlet.
+    
+         $.ajax({
+        	
+    	    type: 'get', // it's easier to read GET request parameters
+    	    url: 'http://localhost:8888/call',
+    	    dataType: 'JSON',
+    	    data: { 
+    	      loadProds: 1,
+    	      test: JSON.stringify(data) // look here!
+    	     },
+    	    
+    	    success: function(data) {
+
+    	    },
+    	    
+    	    error: function(data) {
+    	    	 
+    	    	
+    	    		}
+    	              // json=JSON.parse(data);
+    	             // alert(json);
+    	         
+    	               }
+    	       
+    	    
+    	});
+       
+       
+        	}	
+	  // do something with the return value here if you like
+    }
+  });
+ // setTimeout(executeQuery(time), 20000); // you could choose not to continue on failure...
+  setTimeout(executeQuery, 20000);
+}
+
+//setTimeout(function(){
+  //  location.reload();
+//},10000);
+
+    
+</script>
+</head>
+<body>
+
+Welcome
+
+</body>
+</html>
+  

@@ -1,0 +1,20 @@
+package com.test.database;
+
+public class OfyService {
+
+	static {
+		
+		     factory().registor(Login_Detail.class);
+		     factory().registor(Login_Detail.class);
+		     factory().registor(Login_Detail.class);
+		     factory().registor(Login_Detail.class);
+		     factory().registor(Login_Detail.class);
+		
+		}
+
+	private static Object factory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

@@ -1,0 +1,124 @@
+package com.test.controller;
+
+import static com.test.database.OfyService.ofy;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.test.entity.RecentFollowUp;
+
+public class Client extends HttpServlet{
+	public void doPost(HttpServletRequest req,HttpServletResponse res)
+			throws IOException,ServletException
+{
+
+		PrintWriter out =res.getWriter();
+		
+		RecentFollowUp obj1=new  RecentFollowUp("Need Tutor", "05-12-2018", "12:01", "tutors are available","first","",45821458452L,"789456123","rathe",96436001223L,"paid");
+		 ofy().save().entity(obj1).now();
+	
+		
+		int page =Integer.parseInt(req.getParameter("name"));
+		String id =req.getParameter("id"); 
+		
+		//System.out.println(id);
+		
+	  long time=	System.currentTimeMillis();
+	 	JSONObject json = new JSONObject();
+	    JSONArray arr = new JSONArray();   
+		 
+	    List<RecentFollowUp>  list = null;
+	  
+//filters for hp1	    
+	if(id.equals("client"))
+	{
+	 
+	 list =  ofy().load().type(RecentFollowUp.class).filter("currenttimestamp <=", time-15*86400000).order("currenttimestamp").limit(2000).offset((page-1)*20).limit(20).list();
+	}
+	if(id.equals("client1"))
+	{
+		 list =  ofy().load().type(RecentFollowUp.class).filter("currenttimestamp <=", time-15*86400000).order("currenttimestamp").offset(2000).limit(2000).offset((page-1)*20).limit(20).list();
+	}
+	
+	//end of filters hp;
+	
+	
+	//count filter to count the entries
+	
+   int 	count =  ofy().load().type(RecentFollowUp.class).filter("currenttimestamp <=", time-25*86400000).order("-currenttimestamp").offset(4000).count();
+    	
+        //System.out.println(count);	
+
+    //End count 
+        
+        
+        
+        //filters for pc    
+	if(id.equals("pc1"))
+	{
+	 
+			list =  ofy().load().type(RecentFollowUp.class).filter("currenttimestamp <=", time-25*86400000).order("-currenttimestamp").offset(4000).limit(count/4).offset((page-1)*20).limit(20).list();
+	}
+	if(id.equals("pc2"))
+	{
+		 list =  ofy().load().type(RecentFollowUp.class).filter("currenttimestamp <=", time-25*86400000).order("-currenttimestamp").offset(4000+count/4).limit(count/4).offset((page-1)*20).limit(20).list();
+	}
+	if(id.equals("pc3"))
+	{
+	 
+		 list =  ofy().load().type(RecentFollowUp.class).filter("currenttimestamp <=", time-25*86400000).order("-currenttimestamp").offset(4000+count/4+count/4).limit(count/4).offset((page-1)*20).limit(20).list();
+	}
+	if(id.equals("pc4"))
+	{
+		 list =  ofy().load().type(RecentFollowUp.class).filter("currenttimestamp <=", time-15*86400000).order("-currenttimestamp").offset(4000+count/4+count/4+count/4).offset((page-1)*20).limit(20).list();
+	}
+	
+	// end of pc filters
+	
+	Iterator<RecentFollowUp> itr = list.iterator();
+  		// Traversing elements
+  		while(itr.hasNext())
+  		{
+  			 JSONObject js = new JSONObject();
+  			RecentFollowUp obj = itr.next();
+  			 
+  			try {
+  				 js.put("Currenttimestamp", obj.getCurrenttimestamp());
+  				 js.put("Timestamp",obj.getTimestamp()); 
+  			   js.put("Tutor_contact",obj.getTutor_contact()); 
+  			   js.put("Date", obj.getDate());
+  			   js.put("Emp_id", obj.getEmp_id());
+  			   js.put("Emp_name", obj.getEmp_name());
+  			   js.put("Message", obj.getMessage());
+  			   js.put("Notifyto",obj.getNotifyto());
+  			 js.put("Payment_status",obj.getPayment_status());
+  			js.put("Time",obj.getTime());
+  			js.put("page", page);
+  			js.put("id", id);
+  			arr.put(js);
+  			} 
+  			 catch (Exception e) {
+  				
+  			} 
+  			try{
+  				 json.put("data", arr);	 
+  			}
+  			catch(Exception e)
+  			{
+  				}
+  			
+  		}
+  					 out.print(json.toString());	
+  			
+			}
+}

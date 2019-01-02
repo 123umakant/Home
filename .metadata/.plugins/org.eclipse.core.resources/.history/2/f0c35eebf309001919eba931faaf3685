@@ -1,0 +1,139 @@
+package com.test.entity;
+
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
+
+@Entity
+public class RecentFollowUp {
+
+	@Index  long currenttimestamp;
+	@Index String purpose;
+	@Index String date;
+	@Index String time;
+	@Index String message;
+	@Index String notifyto;
+	@Index String status; // "":not worked,"not answer":not answered,"":followup,"not comfortable with price":not comfortable                               //   with price,"don't want classes now":don't want classes now,"blacklist":blacklist  
+	@Index @Id long tutor_contact;
+	@Index String emp_id;
+	@Index String emp_name;
+	@Index String payment_status;
+	@Index long timestamp;
+	
+	
+	
+	public long getCurrenttimestamp() {
+		return currenttimestamp;
+	}
+
+	public void setCurrenttimestamp(long currenttimestamp) {
+		this.currenttimestamp = currenttimestamp;
+	}
+
+	public String getPayment_status() {
+		return payment_status;
+	}
+
+	public void setPayment_status(String payment_status) {
+		this.payment_status = payment_status;
+	}
+
+	public RecentFollowUp()
+	{
+		}
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public long getTutor_contact() {
+		return tutor_contact;
+	}
+
+	public void setTutor_contact(long tutor_contact) {
+		this.tutor_contact = tutor_contact;
+	}
+
+	public String getEmp_id() {
+		return emp_id;
+	}
+
+	public void setEmp_id(String emp_id) {
+		this.emp_id = emp_id;
+	}
+
+	public String getEmp_name() {
+		return emp_name;
+	}
+
+	public void setEmp_name(String emp_name) {
+		this.emp_name = emp_name;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+
+		public RecentFollowUp(String purpose, String date, String time, String message,
+				String notifyto,String status,long tutor_contact,String emp_id,String emp_name,long timestamp,String payment_status) {
+		super();
+		this.currenttimestamp= 1544458875000L;
+    //				System.currentTimeMillis();
+	//	this.currenttimestamp=1544438992000L;
+		this.purpose = purpose;
+		this.date = date;
+		this.time = time;
+		this.message = message;
+		this.notifyto = notifyto;
+		this.status=status;
+		this.emp_id=emp_id;
+		this.emp_name=emp_name;
+		this.tutor_contact=tutor_contact;
+		this.timestamp=timestamp;
+		this.payment_status=payment_status;
+	}
+
+	public long getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(long timestamp) {
+		this.timestamp = timestamp;
+	}
+
+	public String getPurpose() {
+		return purpose;
+	}
+	public void setPurpose(String purpose) {
+		this.purpose = purpose;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public String getNotifyto() {
+		return notifyto;
+	}
+	public void setNotifyto(String notifyto) {
+		this.notifyto = notifyto;
+	}
+	
+	
+		
+}

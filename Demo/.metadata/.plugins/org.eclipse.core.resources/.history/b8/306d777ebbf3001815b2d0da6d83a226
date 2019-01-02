@@ -1,0 +1,16 @@
+package com.test.entity;
+
+import javax.jdo.annotations.Index;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class StudentDetail {
+@Id long Contect;
+@Index long Name;
+@Index long Password;
+
+	
+	
+	
+}

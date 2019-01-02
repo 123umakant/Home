@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style type="text/css">
+  #record_table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#record_table tr:hover {
+    background: #00FF00;
+}
+
+#record_table td {
+    border: 2px solid #eee;
+}
+  
+  
+  </style>
+</head>
+<body>
+
+<!--  HP BUTTON  SECTION -->
+ <button type="button" class="btn btn-info btn-lg" id="client"   onclick="return formsubmit(event,this.id)">HP1</button>
+ <button type="button" class="btn btn-info btn-lg" id="client1" onclick="return formsubmit(event,this.id)">HP2</button><br><br>
+ 
+ <!-- PC BUTTON SECTION-->
+  <button type="button"  class="btn btn-info btn-lg" id="pc1" onclick="return formsubmit(event,this.id)">PC1</button>
+  <button type="button" class="btn btn-info btn-lg"  id="pc2" onclick="return formsubmit(event,this.id)">PC2</button>
+  <button type="button" class="btn btn-info btn-lg" id="pc3" onclick="return formsubmit(event,this.id)">PC3</button>
+  <button type="button" class="btn btn-info btn-lg" id="pc4" onclick="return formsubmit(event,this.id)">PC4</button><br><br>
+  
+   <!-- Want More Data BUTTON SECTION-->
+  <button type="button" class="btn btn-info btn-lg"  id="more"  onclick="formsubmit(event,'client')">Want More Data</button><br><br>
+  
+         
+       <button type='button' class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" onclick='senDatatModal("notAnswer")'>Not Answer </button>
+       <button type='button' class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"  onclick='senDatatModal("followup")'>Follow Up </button>
+       <button type='button' class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"  onclick='senDatatModal("notComfortableWithPrice")'>Not Comfortable With Price</button>
+       <button type='button' class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"  onclick='senDatatModal("dontWantClass")'> Don't Want Classes </button>
+        <button type='button' class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"  onclick='senDatatModal("Block")'>Block </button>   
+    
+  
+    
+    <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Verification</h4>
+        </div>
+        <div class="modal-body">
+          <p>Are You Sure!.</p>
+        </div>
+        <div class="modal-footer">
+        
+        
+          <button type="button" class="btn btn-default" data-dismiss="modal" id='btnmodal' onclick='myFunction(this.id)' >O.K</button>
+          
+          
+          
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+
+    
+    <!-- End of Modal -->
+          
+    	
+<script type="text/javascript">
+
+
+
+
+
+
+var currenttime;
+  
+  
+  
+  function senDatatModal(action)
+  {
+	  document.getElementById("btnmodal").id=action;
+  }
+  
+function myFunction(id) {
+	
+	var checkedValue = $('.radio:checked').val();
+	
+	
+    $.ajax
+    (
+    {
+    	
+        url:"/Client2",
+        type:'post',
+        data:{checkedValue:checkedValue,id:id},
+        success:function(data){
+        	
+        	//alert(id);
+        	$("#row"+checkedValue).css("display", "none");
+        //	$("#row"+checkedValue).on('click', function(){
+      		//  $(this).closest('tr').hide();
+      		//});
+      	
+        	
+        	//alert("Are You Sure!");
+        
+             
+        
+        },
+        error:function(){alert('error');}
+       
+    }
+);
+}
+var code;
+var page = 1;
+var retn;
+var getId;
+$(function () {
+    $("#more").click(function () {
+    
+    	page = page+1;
+    	
+    });
+});
+  
+	function formsubmit(event ,id){
+		 		     
+ $.ajax({
+        	
+         url:"/Client",
+         type:"post",
+         data:{name:page,id},
+         
+         success:function(data){
+        
+         //alert(data);
+        	   // 	alert(data);
+        	       	var text = JSON.parse(data);
+        	 //      	alert(text.data);
+        	     //  	var obj = JSON.parse(text);
+        	     //  	var text1 = JSON.stringify(obj.data);
+        	      // 	var obj1 = JSON.parse(text1);
+          
+          code = "<table id='record_table' border='2' style='border-collapse: collapse;' width='100%''><thead><th>Select</th><th>Time Stamp &nbsp&nbsp&nbsp</th><th>Tutor Contact</th><th>&nbsp&nbsp&nbsp&nbspCLasses</th><th>Date</th><th>Emp Id</th><th>Emp Name&nbsp&nbsp&nbsp&nbsp</th><th>Message</th><th>&nbsp&nbsp&nbspNotify to</th><th>&nbsp&nbsp&nbspPayment </th><th>&nbsp&nbsp&nbspTime </th></thead><tbody>"
+          
+         for(var i=0;i<text.data.length;i++)
+        	 
+        	 { 
+        	var obj= JSON.stringify(text.data[i]);
+           //	alert(obj);
+    	     
+        	var obj1 = JSON.parse(obj);
+           //	alert(obj1);
+    	   
+        	 code+="<tr id='row"+obj1.Currenttimestamp+"'><td><input  type='radio' name='button' class='radio' value='"+obj1.Currenttimestamp+"'></td><td style='text-align: center; vertical-align: middle;'>"+obj1.Currenttimestamp+"</td><td style='text-align: center; vertical-align: middle;'>"+obj1.Timestamp+"</td><td style='text-align: center; vertical-align: middle;'>"+obj1.Tutor_contact+"</td><td style='text-align: center; vertical-align: middle;'>"+obj1.Date+"</td><td style='text-align: center; vertical-align: middle;'>"+obj1.Emp_id+"</td><td>&nbsp&nbsp&nbsp"+obj1.Emp_name+"&nbsp&nbsp&nbsp</td><td>"+obj1.Message+"&nbsp&nbsp</td><td>&nbsp&nbsp"+obj1.Notifyto+"&nbsp&nbsp</td><td>"+obj1.Payment_status+"</td><td>"+obj1.Time+"</td></tr>";
+        	 retn=obj1.page;
+        	 
+        	// getId = obj1.id;
+        	// alert(getId);
+        	 $(document).ready(function() {
+        		    $('#record_table tr').click(function(event) {
+        		        if (event.target.type !== 'radio') {
+        		            $(':radio', this).trigger('click');
+        		        }
+        		    });
+        		});
+
+        	
+        	
+        	
+        	
+        	 }
+          code+="</tbody></table>"        	 
+        	 document.getElementById("show").innerHTML = code;
+          //document.getElementById("more").innerHTML = getId;
+          
+          if(retn!=1)
+     	 {
+      $('#extra').append(code);    
+     	 }  
+         
+       	return false;
+            
+         }
+         
+        });
+ return false;
+	}
+	 </script>
+<div id="show"></div>
+ <div id="extra"></div>
+</body>
+</html>
+  

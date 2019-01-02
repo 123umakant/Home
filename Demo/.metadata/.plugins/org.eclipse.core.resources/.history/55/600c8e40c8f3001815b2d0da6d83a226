@@ -1,0 +1,21 @@
+package com.test.controller;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Login_Detail extends HttpServlet {
+	
+	
+	public void doPost(HttpServletRequest req,HttpServletResponse res)
+	
+	{
+		
+		String Name = req.getParameter("Name"); 
+		Long Contect = Long.parseLong(req.getParameter("Contect")); 
+	        String Password =req.getParameter("Password");
+	        String Conform = req.getParameter("ConPassword");
+	        
+	}
+	
+}

@@ -1,0 +1,37 @@
+<html>  
+<body>
+
+<%@page import="static com.test.database.OfyService.ofy" %>
+<%@page import="java.io.IOException" %>
+<%@page import="javax.servlet.ServletException" %>
+<%@page import="javax.servlet.http.HttpServlet" %>  
+<%@page import="javax.servlet.http.HttpServletRequest" %>
+<%@page import="javax.servlet.http.HttpServletResponse" %>
+
+<form method = "post">
+<table border="2">
+   <tr>
+        <td>Name</td>
+        <td>Contact</td>
+        
+   </tr>
+<% 
+String Name = req.getParameter("Name"); 
+long Contact = Long.parseLong(req.getParameter("Contact")); 
+String Password =req.getParameter("Password");
+String Confirm = req.getParameter("ConPassword");
+StudentDetail obj = new StudentDetail(Contact, Name, Password);
+
+if(Password.equals(Confirm))
+ {
+
+  ofy().save().entity(obj).now();
+ }
+ else
+ {
+	 
+ }
+%>  
+</form>
+</body>  
+</html>  

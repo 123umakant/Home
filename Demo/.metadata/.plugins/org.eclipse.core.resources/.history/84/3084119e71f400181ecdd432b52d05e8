@@ -1,0 +1,34 @@
+<html>  
+<body>
+
+<%@page import="static com.test.database.OfyService.ofy" %>
+<%@page import="java.io.IOException" %>
+<%@page import="javax.servlet.ServletException" %>
+<%@page import="javax.servlet.http.HttpServlet" %>  
+<%@page import="javax.servlet.http.HttpServletRequest" %>
+<%@page import="java.io.PrintWriter" %>
+<%@page import="java.util.Iterator" %>
+<%@page import="java.util.List" %>
+<%@page import="javax.servlet.http.HttpServletResponse" %>
+<%@page import="javax.servlet.http.HttpServletResponse" %>
+<form method = "post">
+<table border="2">
+   <tr>
+        <td>Name</td>
+        <td>Contact</td>
+       </tr>
+<% 
+List<StudentDetail> itr =ofy().load().type(StudentDetail.class).list();
+
+// Traversing elements
+while(namesIterator.hasNext()){
+	
+	PrintWriter out = res.getWriter();
+	out.println(out);			
+}	
+
+
+%>  
+</form>
+</body>  
+</html>  

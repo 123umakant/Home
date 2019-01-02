@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	<servlet>
+		<servlet-name>Hello_Servlet</servlet-name>
+		<servlet-class>learn_servlet.Hello_ServletServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Hello_Servlet</servlet-name>
+		<url-pattern>/hello_servlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+     <servlet-name>Refresh</servlet-name>
+     <servlet-class>learn_servlet.Refresh</servlet-class>
+ </servlet>
+ 
+ <servlet-mapping>
+     <servlet-name>Refresh</servlet-name>
+     <url-pattern>Refresh</url-pattern>
+ </servlet-mapping>
+ <servlet>
+ <servlet-name>LoginDetail</servlet-name>
+ <servlet-class>com.test.controller.Login_Detail</servlet-class>
+ </servlet>
+<servlet-mapping>
+ <servlet-name>LoginDetail</servlet-name>
+ <url-pattern>Login</url-pattern>
+
+</servlet-mapping>
+ <servlet>
+ <servlet-name>FetchData</servlet-name>
+ <servlet-class>com.test.controller.Fetch_Data</servlet-class>
+ </servlet>
+<servlet-mapping>
+ <servlet-name>FetchData</servlet-name>
+ <url-pattern>Fetch_Data</url-pattern>
+</servlet-mapping>
+<servlet>
+ <servlet-name>UserDetail</servlet-name>
+ <servlet-class>com.test.controller.UserDetail</servlet-class>
+ </servlet>
+<servlet-mapping>
+ <servlet-name>UserDetail</servlet-name>
+ <url-pattern>User</url-pattern>
+	</servlet-mapping>
+<servlet>
+ <servlet-name>Session</servlet-name>
+ <servlet-class>com.test.controller.FirstSession</servlet-class>
+ </servlet>
+<servlet-mapping>
+ <servlet-name>Session</servlet-name>
+ <url-pattern>Session</url-pattern>
+	</servlet-mapping>
+	<servlet>
+ <servlet-name>match</servlet-name>
+ <servlet-class>com.test.controller.SecondSession</servlet-class>
+ </servlet>
+<servlet-mapping>
+ <servlet-name>match</servlet-name>
+ <url-pattern>SecondSession</url-pattern>
+	</servlet-mapping>
+		<servlet>
+ <servlet-name>cred</servlet-name>
+ <servlet-class>com.test.controller.ClientReviewCredit</servlet-class>
+ </servlet>
+<servlet-mapping>
+ <servlet-name>cred</servlet-name>
+ <url-pattern>google</url-pattern>
+	</servlet-mapping>
+
+<servlet>
+   <servlet-name>PageHitCounter</servlet-name>
+   <servlet-class>com.test.controller.PageHitCounter</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>PageHitCounter</servlet-name>
+   <url-pattern>PageHitCounter</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>EmployeeWorkDetail</servlet-name>
+   <servlet-class>com.test.controller.Hr1</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>EmployeeWorkDetail</servlet-name>
+   <url-pattern>Detail</url-pattern>
+</servlet-mapping>
+<servlet>
+   <servlet-name>EmployeeWorkDetail2</servlet-name>
+   <servlet-class>com.test.controller.Hr2</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>EmployeeWorkDetail2</servlet-name>
+   <url-pattern>Hr1</url-pattern>
+</servlet-mapping>
+<servlet>
+   <servlet-name>EmployeeWorkDetail3</servlet-name>
+   <servlet-class>com.test.controller.Hr3</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>EmployeeWorkDetail3</servlet-name>
+   <url-pattern>Hr3</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>MainHr</servlet-name>
+   <servlet-class>com.test.controller.MainHr</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>MainHr</servlet-name>
+   <url-pattern>MainHr</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>MainHrFetch</servlet-name>
+   <servlet-class>com.test.controller.HrData</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>MainHrFetch</servlet-name>
+   <url-pattern>HrData</url-pattern>
+</servlet-mapping>
+<servlet>
+   <servlet-name>CSVParser</servlet-name>
+   <servlet-class>com.test.controller.CSVParser</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>CSVParser</servlet-name>
+   <url-pattern>parser</url-pattern>
+</servlet-mapping>
+<servlet>
+   <servlet-name>edit</servlet-name>
+   <servlet-class>com.test.controller.edit</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>edit</servlet-name>
+   <url-pattern>enter</url-pattern>
+</servlet-mapping>
+
+<servlet>
+   <servlet-name>unVerified</servlet-name>
+   <servlet-class>com.test.controller.unVerified</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>unVerified</servlet-name>
+   <url-pattern>unVerified</url-pattern>
+</servlet-mapping>
+<servlet>
+   <servlet-name>call</servlet-name>
+   <servlet-class>com.test.controller.Call</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>call</servlet-name>
+   <url-pattern>call</url-pattern>
+</servlet-mapping>
+<servlet>
+   <servlet-name>PaymentEntry</servlet-name>
+   <servlet-class>com.test.controller.PaymentEntryServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+   <servlet-name>PaymentEntry</servlet-name>
+   <url-pattern>PaymentEntry</url-pattern>
+</servlet-mapping>
+
+
+
+<servlet>
+   <servlet-name>client</servlet-name>
+   <servlet-class>com.test.controller.Client</servlet-class>
+</servlet>
+<servlet-mapping>
+   <servlet-name>client</servlet-name>
+   <url-pattern>Client</url-pattern>
+</servlet-mapping>
+
+<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>	
+</web-app>

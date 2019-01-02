@@ -1,0 +1,33 @@
+package com.test.controller;
+import static com.test.database.OfyService.ofy;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.test.entity.StudentDetail;
+
+public class Fetch_Data extends HttpServlet{
+	
+	public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{
+		
+	   // Getting Iterator
+		List<StudentDetail> list =ofy().load().type(StudentDetail.class).list();
+		Iterator<StudentDetail> itr = list.iterator();
+		// Traversing elements
+		while(itr.hasNext())
+		{
+			StudentDetail value=itr.next()
+			
+						
+		}	
+		
+	}
+
+}

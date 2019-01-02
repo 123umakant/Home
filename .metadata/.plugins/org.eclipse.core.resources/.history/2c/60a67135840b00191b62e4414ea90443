@@ -1,0 +1,85 @@
+package com.test.controller;
+
+import static com.test.database.OfyService.ofy;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import com.test.entity.RecentFollowUp;
+
+public class Client2 extends HttpServlet{
+	public void doPost(HttpServletRequest req,HttpServletResponse res)
+			throws IOException,ServletException
+{
+
+		PrintWriter out =res.getWriter();
+		JSONObject json = new JSONObject();
+	       
+		
+		
+		//RecentFollowUp obj1=new  RecentFollowUp("Need Tutor", "05-12-2018", "12:01", "tutors are available","kapil","",1544438992000L,"789456123","pravin",789456123,"paid");
+		 //ofy().save().entity(obj1).now();
+    
+ 		long checkbox = Long.parseLong(req.getParameter("checkedValue"));
+ 		String id = req.getParameter("id");
+	     //System.out.println(id);
+	     //System.out.println(checkbox);
+ 		    RecentFollowUp obj=null;
+ 
+   	 		
+ 		if(id.equals("notAnswer"))
+   	 		{
+ 	        obj =  ofy().load().type(RecentFollowUp.class).filter("currenttimestamp <=",checkbox ).first().now();
+ 	          
+ 	         obj.setStatus("Not Answer");
+   	 		}
+ 	 
+   	 	
+   	 		if(id.equals("followUp"))
+	 		{
+	        obj =  ofy().load().type(RecentFollowUp.class).filter("currenttimestamp <=",checkbox ).first().now();
+	          
+	         obj.setStatus("followUp");
+	 		}
+   	 
+   	 	if(id.equals("notComfortableWithPrice"))
+ 		{
+      obj =  ofy().load().type(RecentFollowUp.class).filter("currenttimestamp <=",checkbox ).first().now();
+        
+       obj.setStatus("notComfortableWithPrice");
+ 		}
+   	
+   	 if(id.equals("dontWantClass"))
+		{
+     obj =  ofy().load().type(RecentFollowUp.class).filter("currenttimestamp <=",checkbox ).first().now();
+       
+      obj.setStatus("dontWantClass");
+		}
+   	
+   	if(id.equals("Block"))
+		{
+     obj =  ofy().load().type(RecentFollowUp.class).filter("currenttimestamp <=",checkbox ).first().now();
+       
+      obj.setStatus("Block");
+		}
+   	
+ 	   ofy().save().entity(obj).now();
+ 		//System.out.println("Update Successul");
+ 	   
+ 			
+					 out.print(json.toString());	
+
+ 	   
+ 	   
+}		
+	}

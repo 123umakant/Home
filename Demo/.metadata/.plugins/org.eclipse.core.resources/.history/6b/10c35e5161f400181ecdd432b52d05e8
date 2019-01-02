@@ -1,0 +1,25 @@
+package com.test.database;
+
+import com.googlecode.objectify.Objectify;
+import com.googlecode.objectify.ObjectifyFactory;
+import com.googlecode.objectify.ObjectifyService;
+import com.test.entity.*;
+
+public class OfyService {
+	static {
+		
+		     factory().register(StudentDetail.class);
+		     
+	
+		}
+public static Objectify ofy()
+{
+	 return ObjectifyService.ofy();
+  
+}
+	private static ObjectifyFactory factory() {
+		// TODO Auto-generated method stub
+		return ObjectifyService.factory();
+	}
+	
+}

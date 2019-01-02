@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.google.appengine.eclipse.wtp.GaeLaunchConfigurationType">
+<stringAttribute key="server-id" value="Google App Engine at localhost"/>
+</launchConfiguration>

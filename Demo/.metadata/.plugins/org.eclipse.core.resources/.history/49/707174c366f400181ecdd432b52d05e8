@@ -1,0 +1,38 @@
+package com.test.controller;
+import static com.test.database.OfyService.ofy;
+
+import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.test.entity.StudentDetail;
+
+public class Fetch_Data {
+	
+	public void doPost(HttpServletRequest req,HttpServletResponse res)
+	{
+		
+		ofy().load().type(StudentDetail.class).list();
+		
+		List<String> names = new LinkedList();
+		names.add("Name");
+		names.add("Contect");
+		names.add("Password");
+		
+		// Getting Iterator
+		Iterator<String> namesIterator = names.iterator();
+			
+		// Traversing elements
+		while(namesIterator.hasNext()){
+			
+			PrintWriter out =  res.getWriter();
+			out.println(out);			
+		}	
+		
+	}
+
+}
